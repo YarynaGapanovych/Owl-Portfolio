@@ -34,95 +34,114 @@ export default function FromIdeaToLaunch() {
     },
   ];
 
-  // Position steps along the route: left top → left 320px → right 320px → left 640px → left 960px → right 960px
+  // Position steps along the route based on actual road coordinates
   const stepPositions = [
-    { side: "left", y: 100 }, // Step 1: at left top (100, 0)
-    { side: "right", y: 320 }, // Step 2: at right after first horizontal (900, 320)
-    { side: "left", y: 640 }, // Step 3: at left after second horizontal (100, 640)
-    { side: "right", y: 640 }, // Step 4: at right same level (900, 640)
-    { side: "left", y: 960 }, // Step 5: at left after third horizontal (100, 960)
-    { side: "right", y: 960 }, // Step 6: at right end (900, 960)
+    { side: "left", x: 1130, y: 220 }, // Step 1: below first horizontal line (H 910 at y=50)
+    { side: "right", x: 300, y: 570 }, // Step 2: lower on first curve
+    { side: "left", x: 1130, y: 920 }, // Step 3: lower on second curve
+    { side: "right", x: 300, y: 1270 }, // Step 4: lower on third curve
+    { side: "left", x: 1130, y: 1620 }, // Step 5: lower on fourth curve
+    { side: "right", x: 300, y: 1970 }, // Step 6: lower on fifth curve
   ];
 
   return (
     <section
       id="from-idea-to-launch"
-      className="container mx-auto px-4 py-16 md:py-24 bg-pastel-gradient"
+      // className=" mx-auto  md:py-24 bg-pastel-gradient"
     >
-      <div className="max-w-6xl mx-auto relative">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-800">
+      <div className="mx-auto relative">
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-header">
           From Idea to Launch
         </h2>
 
-        <div className="relative w-full min-h-[1200px] flex justify-center">
+        <div className="relative w-full" style={{ minHeight: "600px" }}>
           <svg
-            className="absolute top-0 left-0 w-full h-full pointer-events-none"
-            viewBox="0 0 1000 1200"
+            viewBox="0 0 1400 2400"
+            preserveAspectRatio="xMidYMid meet"
+            className="w-full h-auto"
+            style={{ maxWidth: "100%", height: "auto" }}
             xmlns="http://www.w3.org/2000/svg"
           >
-            {/* Path: left top → down 320px → right → down 320px → left → down 320px → right */}
             <path
               d="
-            M100 0
-            L 100 320
-            L 900 320
-            L 900 640
-            L 100 640
-            L 100 960
-            L 900 960
-          "
-              stroke="#968AF8"
-              strokeWidth="100"
+      M 0 50
+      H 1000
+      A 175 175 0 1 1 1000 400
+      H 400
+      A 175 175 0 1 0 400 750
+      H 1000
+      A 175 175 0 1 1 1000 1100
+      H 400
+      A 175 175 0 1 0 400 1450
+      H 1000
+      A 175 175 0 1 1 1000 1800
+      H 400
+      A 175 175 0 1 0 400 2150
+      H 1400
+    "
+              // stroke="#968AF8"
+              stroke="#1f5b97"
+              // stroke="#112d46"
+              strokeWidth="80"
               fill="none"
               strokeLinecap="round"
               strokeLinejoin="round"
             />
-            {/* Dashed center line */}
+
             <path
               d="
-            M100 0
-            L 100 320
-            L 900 320
-            L 900 640
-            L 100 640
-            L 100 960
-            L 900 960
-          "
-              stroke="white"
-              strokeWidth="6"
+      M 0 50
+      H 1000
+      A 175 175 0 1 1 1000 400
+      H 400
+      A 175 175 0 1 0 400 750
+      H 1000
+      A 175 175 0 1 1 1000 1100
+      H 400
+      A 175 175 0 1 0 400 1450
+      H 1000
+      A 175 175 0 1 1 1000 1800
+      H 400
+      A 175 175 0 1 0 400 2150
+      H 1400
+    "
               fill="none"
-              strokeDasharray="30,30"
-              strokeLinecap="round"
-              strokeLinejoin="round"
+              stroke="#fff"
+              stroke-width="6"
+              stroke-dasharray="20 18"
+              stroke-linecap="round"
             />
           </svg>
 
           {steps.map((step, index) => {
             const pos = stepPositions[index];
             const isLeft = pos.side === "left";
-            // Calculate position based on route: left side at x=100, right side at x=900
-            // Convert viewBox coordinates to percentage/px positioning
-            const routeX = isLeft ? 100 : 900;
-            const routeY = pos.y;
+            const xPercent = (pos.x / 1400) * 100;
+            const yPercent = (pos.y / 2400) * 100;
+
+            const gapPercent = 2.5;
+
             return (
               <div
                 key={step.number}
                 style={{
                   position: "absolute",
-                  top: `${(routeY / 1200) * 100}%`,
-                  left: isLeft ? "calc(50% - 450px)" : "calc(50% + 250px)",
-                  width: "300px",
-                  transform: "translateY(-50%)", // Center vertically on the route point
+                  top: `${yPercent}%`,
+                  left: isLeft
+                    ? `max(1%, ${Math.max(0, xPercent - gapPercent - 20)}%)`
+                    : `${Math.min(100 - gapPercent - 20, xPercent + gapPercent)}%`,
+                  width: "clamp(200px, 20vw, 320px)",
+                  maxWidth: "25%",
+                  transform: "translateY(-50%)",
                 }}
-                className="text-center card-light rounded-xl p-6"
+                className={`text-center p-3 sm:p-4  ${
+                  isLeft ? "text-right" : "text-left"
+                }`}
               >
-                <div className="w-16 h-16 gradient-purple-pink rounded-full mx-auto mb-4 flex items-center justify-center text-2xl font-bold text-white">
-                  {step.number}
-                </div>
-                <h3 className="text-gray-800 text-xl font-semibold mb-2">
-                  {step.title}
+                <h3 className="text-subheader text-base sm:text-lg md:text-xl lg:text-2xl font-semibold mb-1 sm:mb-2">
+                  {step.number}. {step.title}
                 </h3>
-                <p className="text-gray-600 text-sm">{step.description}</p>
+                <p className="text-primary ">{step.description}</p>
               </div>
             );
           })}
