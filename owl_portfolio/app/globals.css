@@ -34,6 +34,7 @@
   --color-text: #c5c3c6;
   --color-purple: #916ee1;
   --color-pink: #ec4899;
+  --color-light-bg: #c5c3c6;
 }
 
 body {
@@ -234,4 +235,83 @@ body {
 .remove-white-bg {
   mix-blend-mode: multiply;
   filter: contrast(1.1);
+}
+
+/* Tech icon grayscale effect */
+.tech-icon {
+  filter: grayscale(100%) brightness(0) invert(1);
+  transition: filter 0.3s ease;
+}
+
+.group:hover .tech-icon {
+  filter: none;
+}
+
+/* Hide scrollbar for carousel */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Smooth Embla Carousel transitions */
+.embla {
+  overflow: hidden;
+}
+
+.embla__container {
+  display: flex;
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+.embla__slide {
+  flex: 0 0 auto;
+  min-width: 0;
+  backface-visibility: hidden;
+  position: relative;
+}
+
+.embla__parallax {
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+}
+
+.embla__parallax__layer {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  will-change: transform;
+}
+
+/* Radial gradients for Technologies section */
+.bg-gradient-radial {
+  background: radial-gradient(
+    circle,
+    var(--color-header) 0%,
+    var(--color-subheader) 50%,
+    transparent 100%
+  );
+}
+
+.bg-gradient-radial-blue {
+  background: radial-gradient(
+    circle,
+    #1f5b97 0%,
+    #112d46 50%,
+    transparent 100%
+  );
+}
+
+.bg-gradient-radial-orange {
+  background: radial-gradient(
+    circle,
+    var(--color-header) 0%,
+    #803c1a 50%,
+    transparent 100%
+  );
 }

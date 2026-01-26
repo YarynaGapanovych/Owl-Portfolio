@@ -1,4 +1,20 @@
+"use client";
+
+import { useEffect, useState } from "react";
+
 export default function FromIdeaToLaunch() {
+  const [windowWidth, setWindowWidth] = useState(1400);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   const steps = [
     {
       number: 1,
@@ -34,21 +50,48 @@ export default function FromIdeaToLaunch() {
     },
   ];
 
-  // Position steps along the route based on actual road coordinates
-  const stepPositions = [
-    { side: "left", x: 1130, y: 220 }, // Step 1: below first horizontal line (H 910 at y=50)
-    { side: "right", x: 300, y: 570 }, // Step 2: lower on first curve
-    { side: "left", x: 1130, y: 920 }, // Step 3: lower on second curve
-    { side: "right", x: 300, y: 1270 }, // Step 4: lower on third curve
-    { side: "left", x: 1130, y: 1620 }, // Step 5: lower on fourth curve
-    { side: "right", x: 300, y: 1970 }, // Step 6: lower on fifth curve
-  ];
+  // Adaptive positions based on screen size
+  const getStepPositions = () => {
+    const isMobile = windowWidth < 768;
+    const isTablet = windowWidth >= 768 && windowWidth < 1024;
+
+    if (isMobile) {
+      // Mobile: center positions, adjust for smaller screens
+      return [
+        { side: "left", x: 600, y: 80 },
+        { side: "right", x: 400, y: 530 },
+        { side: "left", x: 600, y: 880 },
+        { side: "right", x: 400, y: 1230 },
+        { side: "left", x: 600, y: 1580 },
+        { side: "right", x: 400, y: 1930 },
+      ];
+    } else if (isTablet) {
+      // Tablet: slightly adjusted positions
+      return [
+        { side: "left", x: 650, y: 80 },
+        { side: "right", x: 425, y: 530 },
+        { side: "left", x: 650, y: 880 },
+        { side: "right", x: 425, y: 1230 },
+        { side: "left", x: 650, y: 1580 },
+        { side: "right", x: 425, y: 1930 },
+      ];
+    } else {
+      // Desktop: original positions
+      return [
+        { side: "left", x: 700, y: 80 },
+        { side: "right", x: 450, y: 530 },
+        { side: "left", x: 700, y: 880 },
+        { side: "right", x: 450, y: 1230 },
+        { side: "left", x: 700, y: 1580 },
+        { side: "right", x: 450, y: 1930 },
+      ];
+    }
+  };
+
+  const stepPositions = getStepPositions();
 
   return (
-    <section
-      id="from-idea-to-launch"
-      // className=" mx-auto  md:py-24 bg-pastel-gradient"
-    >
+    <section id="from-idea-to-launch">
       <div className="mx-auto relative">
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-header">
           From Idea to Launch
@@ -119,7 +162,21 @@ export default function FromIdeaToLaunch() {
             const xPercent = (pos.x / 1400) * 100;
             const yPercent = (pos.y / 2400) * 100;
 
-            const gapPercent = 2.5;
+            // Adaptive gap based on screen size
+            const isMobile = windowWidth < 768;
+            const gapPercent = isMobile ? 1 : 2.5;
+            const offsetPercent = isMobile ? 5 : 20;
+
+            // On mobile, center items; on larger screens use side positioning
+            const getLeftPosition = () => {
+              if (isMobile) {
+                // Center items on mobile - use road center (around 50% of viewBox width)
+                return "50%";
+              }
+              return isLeft
+                ? `max(1%, ${Math.max(0, xPercent - gapPercent - offsetPercent)}%)`
+                : `${Math.min(100 - gapPercent - offsetPercent, xPercent + gapPercent)}%`;
+            };
 
             return (
               <div
@@ -127,16 +184,11 @@ export default function FromIdeaToLaunch() {
                 style={{
                   position: "absolute",
                   top: `${yPercent}%`,
-                  left: isLeft
-                    ? `max(1%, ${Math.max(0, xPercent - gapPercent - 20)}%)`
-                    : `${Math.min(100 - gapPercent - 20, xPercent + gapPercent)}%`,
-                  width: "clamp(200px, 20vw, 320px)",
-                  maxWidth: "25%",
-                  transform: "translateY(-50%)",
+                  left: getLeftPosition(),
+                  transform: isMobile ? "translateX(-50%)" : "none",
+                  maxWidth: isMobile ? "85%" : "60%",
                 }}
-                className={`text-center p-3 sm:p-4  ${
-                  isLeft ? "text-right" : "text-left"
-                }`}
+                className={`p-3 sm:p-4 ${isMobile ? "text-center" : ""}`}
               >
                 <h3 className="text-subheader text-base sm:text-lg md:text-xl lg:text-2xl font-semibold mb-1 sm:mb-2">
                   {step.number}. {step.title}
