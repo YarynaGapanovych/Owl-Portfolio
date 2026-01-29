@@ -105,6 +105,23 @@ export default function FromIdeaToLaunch() {
             style={{ maxWidth: "100%", height: "auto" }}
             xmlns="http://www.w3.org/2000/svg"
           >
+            <defs>
+              <filter
+                id="roadGlow"
+                x="-50%"
+                y="-50%"
+                width="200%"
+                height="200%"
+              >
+                <feDropShadow
+                  dx="0"
+                  dy="0"
+                  stdDeviation="50"
+                  floodColor="#1f5b97"
+                  floodOpacity="0.5"
+                />
+              </filter>
+            </defs>
             <path
               d="
       M 0 50
@@ -123,14 +140,16 @@ export default function FromIdeaToLaunch() {
       H 1400
     "
               // stroke="#968AF8"
-              stroke="#1f5b97"
               // stroke="#112d46"
+              stroke="#1f5b97"
+              // stroke="url(#roadGradient)"
               strokeWidth="80"
               fill="none"
               strokeLinecap="round"
               strokeLinejoin="round"
+              filter="url(#roadGlow)"
             />
-
+            {/* Dashed center line */}
             <path
               d="
       M 0 50
@@ -188,8 +207,15 @@ export default function FromIdeaToLaunch() {
                   transform: isMobile ? "translateX(-50%)" : "none",
                   maxWidth: isMobile ? "85%" : "60%",
                 }}
-                className={`p-3 sm:p-4 ${isMobile ? "text-center" : ""}`}
+                className={`relative p-3 sm:p-4 ${isMobile ? "text-center" : ""}`}
               >
+                <div
+                  className="
+      absolute -inset-5
+      bg-[radial-gradient(ellipse_60%_40%_at_50%_35%,rgba(255,180,80,0.22),transparent_70%)]
+      blur-2xl
+    "
+                />
                 <h3 className="text-subheader text-base sm:text-lg md:text-xl lg:text-2xl font-semibold mb-1 sm:mb-2">
                   {step.number}. {step.title}
                 </h3>

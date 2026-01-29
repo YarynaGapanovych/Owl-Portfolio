@@ -77,11 +77,13 @@ export default function Technologies() {
       id="tech-stack"
       className="container mx-auto px-4 py-16 md:py-24 relative overflow-hidden "
     >
-      {/* <div className="absolute z-0 top-0 left-0 w-full h-full pointer-events-none">
-        <div className="absolute top-1/4 left-1/3 w-[500px] h-[500px] bg-gradient-radial opacity-30 blur-3xl"></div>
-        <div className="absolute top-1/2 right-1/4 w-[600px] h-[600px] bg-gradient-radial-blue opacity-30 blur-3xl"></div>
-        <div className="absolute bottom-0 left-1/4 w-[400px] h-[400px] bg-gradient-radial-orange opacity-25 blur-3xl"></div>
-      </div> */}
+      <div
+        className="
+      absolute -inset-5
+      bg-[radial-gradient(ellipse_60%_40%_at_50%_35%,rgba(255,180,80,0.22),transparent_70%)]
+      blur-2xl
+    "
+      />
       <div className="max-w-6xl mx-auto relative z-10">
         <h2 className="text-3xl md:text-4xl font-bold text-center text-header mb-12">
           Technologies
