@@ -50,42 +50,40 @@ export default function FromIdeaToLaunch() {
     },
   ];
 
-  // Adaptive positions based on screen size
+  // Road segment Y positions from the SVG path
+  // The road has curves at: 50, 400, 750, 1100, 1450, 1800, 2150
+  const roadSegmentPoints = [50, 400, 750, 1100, 1450, 1800, 2150];
+
+  // Calculate center Y positions between road segments
+  const getCenterYPositions = () => {
+    const centers = [];
+    for (let i = 0; i < roadSegmentPoints.length - 1; i++) {
+      const startY = roadSegmentPoints[i];
+      const endY = roadSegmentPoints[i + 1];
+      const centerY = (startY + endY) / 2;
+      centers.push(centerY);
+    }
+    return centers;
+  };
+
   const getStepPositions = () => {
     const isMobile = windowWidth < 768;
-    const isTablet = windowWidth >= 768 && windowWidth < 1024;
+    const centerX = 700;
+    const offset = isMobile ? 100 : 150;
 
-    if (isMobile) {
-      // Mobile: center positions, adjust for smaller screens
-      return [
-        { side: "left", x: 600, y: 80 },
-        { side: "right", x: 400, y: 530 },
-        { side: "left", x: 600, y: 880 },
-        { side: "right", x: 400, y: 1230 },
-        { side: "left", x: 600, y: 1580 },
-        { side: "right", x: 400, y: 1930 },
-      ];
-    } else if (isTablet) {
-      // Tablet: slightly adjusted positions
-      return [
-        { side: "left", x: 650, y: 80 },
-        { side: "right", x: 425, y: 530 },
-        { side: "left", x: 650, y: 880 },
-        { side: "right", x: 425, y: 1230 },
-        { side: "left", x: 650, y: 1580 },
-        { side: "right", x: 425, y: 1930 },
-      ];
-    } else {
-      // Desktop: original positions
-      return [
-        { side: "left", x: 700, y: 80 },
-        { side: "right", x: 450, y: 530 },
-        { side: "left", x: 700, y: 880 },
-        { side: "right", x: 450, y: 1230 },
-        { side: "left", x: 700, y: 1580 },
-        { side: "right", x: 450, y: 1930 },
-      ];
-    }
+    // Use flexible Y positions based on road segment centers
+    const yPositions = getCenterYPositions();
+
+    return yPositions.map((y, index) => {
+      const stepNumber = index + 1;
+      const isOdd = stepNumber % 2 === 1;
+
+      return {
+        side: isOdd ? "left" : "right",
+        x: isOdd ? centerX - offset : centerX + offset,
+        y: y,
+      };
+    });
   };
 
   const stepPositions = getStepPositions();
@@ -105,6 +103,23 @@ export default function FromIdeaToLaunch() {
             style={{ maxWidth: "100%", height: "auto" }}
             xmlns="http://www.w3.org/2000/svg"
           >
+            <defs>
+              <filter
+                id="roadGlow"
+                x="-50%"
+                y="-50%"
+                width="200%"
+                height="200%"
+              >
+                <feDropShadow
+                  dx="0"
+                  dy="0"
+                  stdDeviation="50"
+                  floodColor="#1f5b97"
+                  floodOpacity="0.5"
+                />
+              </filter>
+            </defs>
             <path
               d="
       M 0 50
@@ -122,15 +137,14 @@ export default function FromIdeaToLaunch() {
       A 175 175 0 1 0 400 2150
       H 1400
     "
-              // stroke="#968AF8"
-              stroke="#1f5b97"
               // stroke="#112d46"
+              stroke="#1f5b97"
               strokeWidth="80"
               fill="none"
               strokeLinecap="round"
               strokeLinejoin="round"
+              filter="url(#roadGlow)"
             />
-
             <path
               d="
       M 0 50
@@ -159,23 +173,34 @@ export default function FromIdeaToLaunch() {
           {steps.map((step, index) => {
             const pos = stepPositions[index];
             const isLeft = pos.side === "left";
-            const xPercent = (pos.x / 1400) * 100;
             const yPercent = (pos.y / 2400) * 100;
 
-            // Adaptive gap based on screen size
             const isMobile = windowWidth < 768;
-            const gapPercent = isMobile ? 1 : 2.5;
-            const offsetPercent = isMobile ? 5 : 20;
+            const isTablet = windowWidth >= 768 && windowWidth < 1024;
 
-            // On mobile, center items; on larger screens use side positioning
-            const getLeftPosition = () => {
+            const getPositionStyle = () => {
+              // Center the block vertically by translating up by 50% of its height
+              const verticalCenter = "translateY(-50%)";
+
               if (isMobile) {
-                // Center items on mobile - use road center (around 50% of viewBox width)
-                return "50%";
+                return {
+                  left: "50%",
+                  transform: `translateX(-50%) ${verticalCenter}`,
+                };
               }
-              return isLeft
-                ? `max(1%, ${Math.max(0, xPercent - gapPercent - offsetPercent)}%)`
-                : `${Math.min(100 - gapPercent - offsetPercent, xPercent + gapPercent)}%`;
+
+              const offset = isTablet ? "150px" : "200px";
+              if (isLeft) {
+                return {
+                  right: `calc(50% + ${offset})`,
+                  transform: verticalCenter,
+                };
+              } else {
+                return {
+                  left: `calc(50% + ${offset})`,
+                  transform: verticalCenter,
+                };
+              }
             };
 
             return (
@@ -184,16 +209,31 @@ export default function FromIdeaToLaunch() {
                 style={{
                   position: "absolute",
                   top: `${yPercent}%`,
-                  left: getLeftPosition(),
-                  transform: isMobile ? "translateX(-50%)" : "none",
-                  maxWidth: isMobile ? "85%" : "60%",
+                  ...getPositionStyle(),
+                  maxWidth: isMobile ? "85%" : "400px",
                 }}
-                className={`p-3 sm:p-4 ${isMobile ? "text-center" : ""}`}
+                className={`relative flex gap-4 items-center mx-6 p-3 sm:p-4 ${isMobile ? "text-center" : ""}`}
               >
-                <h3 className="text-subheader text-base sm:text-lg md:text-xl lg:text-2xl font-semibold mb-1 sm:mb-2">
-                  {step.number}. {step.title}
-                </h3>
-                <p className="text-primary ">{step.description}</p>
+                <div
+                  className="
+      absolute
+      top-1/2 left-1/2
+      w-96 h-48
+      bg-[radial-gradient(ellipse_80%_50%_at_50%_50%,rgba(255,180,80,0.22),transparent_70%)]
+      blur-2xl
+      -translate-x-1/2 -translate-y-1/2
+      pointer-events-none
+    "
+                />
+                <h2 className="text-subheader text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-semibold">
+                  {step.number}.
+                </h2>
+                <div>
+                  <h3 className="text-subheader text-base sm:text-lg md:text-xl lg:text-2xl font-semibold mb-1 sm:mb-2">
+                    {step.title}
+                  </h3>
+                  <p className="text-primary ">{step.description}</p>
+                </div>
               </div>
             );
           })}

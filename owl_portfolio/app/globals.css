@@ -35,6 +35,17 @@
   --color-purple: #916ee1;
   --color-pink: #ec4899;
   --color-light-bg: #c5c3c6;
+
+  /* Color palette variables */
+  --color-hot-cinnamon: var(--hot-cinnamon);
+  --color-russet: var(--russet);
+  --color-matisse: var(--matisse);
+  --color-bunker: var(--bunker);
+  --color-emperor: var(--emperor);
+  --color-elephant: var(--elephant);
+  --color-french-gray: var(--french-gray);
+  --color-cedar: var(--cedar);
+  --color-trinidad: var(--trinidad);
 }
 
 body {
@@ -131,6 +142,34 @@ body {
 }
 
 .bg-hero-gradient > * {
+  position: relative;
+  z-index: 1;
+}
+
+.bg-header-light {
+  position: relative;
+  overflow: hidden;
+}
+
+.bg-header-light::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    circle at center,
+    rgba(255, 255, 255, 0.15) 0%,
+    rgba(255, 255, 255, 0.08) 30%,
+    transparent 70%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+.bg-header-light > * {
   position: relative;
   z-index: 1;
 }
@@ -314,4 +353,67 @@ body {
     #803c1a 50%,
     transparent 100%
   );
+}
+
+.bg-header-light {
+  position: relative;
+  background-color: #10161d; /* bunker */
+  overflow: hidden;
+}
+
+.bg-header-light::before {
+  content: "";
+  position: absolute;
+  inset: -40%;
+  background:
+    radial-gradient(
+      circle at 30% 20%,
+      rgba(99, 179, 237, 0.18),
+      transparent 60%
+    ),
+    radial-gradient(
+      circle at 70% 60%,
+      rgba(236, 201, 75, 0.12),
+      transparent 55%
+    );
+  filter: blur(80px);
+  z-index: 0;
+}
+
+/* Contact form styles */
+.contact-form-card {
+  background-color: rgba(16, 22, 29, 0.8); /* bunker with transparency */
+  border: 1px solid rgba(31, 91, 151, 0.3); /* matisse border */
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 0 20px rgba(31, 91, 151, 0.1);
+}
+
+.contact-input {
+  background-color: rgba(16, 22, 29, 0.6); /* bunker */
+  border: 1px solid rgba(31, 91, 151, 0.4); /* matisse */
+  color: white;
+}
+
+.contact-input:focus {
+  border-color: var(--color-matisse);
+  box-shadow: 0 0 0 3px rgba(31, 91, 151, 0.2);
+  outline: none;
+}
+
+.contact-button {
+  background: linear-gradient(135deg, var(--color-header) 0%, var(--color-subheader) 100%);
+  box-shadow: 0 4px 15px rgba(236, 78, 0, 0.3), 0 0 20px rgba(220, 95, 25, 0.2);
+}
+
+.contact-button:hover {
+  box-shadow: 0 6px 20px rgba(236, 78, 0, 0.4), 0 0 25px rgba(220, 95, 25, 0.3);
+}
+
+.contact-link {
+  color: var(--color-french-gray);
+  transition: all 0.2s ease;
+}
+
+.contact-link:hover {
+  color: var(--color-header);
+  transform: translateY(-2px);
 }

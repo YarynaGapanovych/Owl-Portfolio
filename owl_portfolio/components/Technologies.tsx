@@ -77,36 +77,43 @@ export default function Technologies() {
       id="tech-stack"
       className="container mx-auto px-4 py-16 md:py-24 relative overflow-hidden "
     >
-      {/* <div className="absolute z-0 top-0 left-0 w-full h-full pointer-events-none">
-        <div className="absolute top-1/4 left-1/3 w-[500px] h-[500px] bg-gradient-radial opacity-30 blur-3xl"></div>
-        <div className="absolute top-1/2 right-1/4 w-[600px] h-[600px] bg-gradient-radial-blue opacity-30 blur-3xl"></div>
-        <div className="absolute bottom-0 left-1/4 w-[400px] h-[400px] bg-gradient-radial-orange opacity-25 blur-3xl"></div>
-      </div> */}
       <div className="max-w-6xl mx-auto relative z-10">
         <h2 className="text-3xl md:text-4xl font-bold text-center text-header mb-12">
           Technologies
         </h2>
-        <div className="relative overflow-hidden">
-          <Splide options={splideOptions}>
-            {techStack.map((tech, index) => (
-              <SplideSlide key={`${tech.name}-${index}`}>
-                <div className="flex flex-col items-center group min-w-[90px] md:min-w-[100px]">
-                  <div className="w-16 h-16 rounded-lg mb-2 flex items-center justify-center hover:glow-effect transition-all text-white p-2">
-                    <Image
-                      src={tech.icon}
-                      alt={tech.name}
-                      width={48}
-                      height={48}
-                      className="object-contain w-12 h-12"
-                    />
+        <div className="relative overflow-visible py-8">
+          <div
+            className="
+          absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
+          w-[120%] h-[120%]
+          bg-[radial-gradient(ellipse_70%_50%_at_50%_50%,rgba(255,180,80,0.2)_0%,rgba(255,180,80,0.08)_50%,transparent_80%)]
+          blur-3xl
+          pointer-events-none
+          -z-0
+        "
+          />
+          <div className="relative z-10">
+            <Splide options={splideOptions}>
+              {techStack.map((tech, index) => (
+                <SplideSlide key={`${tech.name}-${index}`}>
+                  <div className="flex flex-col items-center group min-w-[90px] md:min-w-[100px]">
+                    <div className="w-16 h-16 rounded-lg mb-2 flex items-center justify-center hover:glow-effect transition-all text-white p-2">
+                      <Image
+                        src={tech.icon}
+                        alt={tech.name}
+                        width={48}
+                        height={48}
+                        className="object-contain w-12 h-12"
+                      />
+                    </div>
+                    <span className="text-sm text-gray-400 text-center">
+                      {tech.name}
+                    </span>
                   </div>
-                  <span className="text-sm text-gray-400 text-center">
-                    {tech.name}
-                  </span>
-                </div>
-              </SplideSlide>
-            ))}
-          </Splide>
+                </SplideSlide>
+              ))}
+            </Splide>
+          </div>
         </div>
       </div>
     </section>
