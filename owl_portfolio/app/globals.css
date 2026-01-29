@@ -379,3 +379,41 @@ body {
   filter: blur(80px);
   z-index: 0;
 }
+
+/* Contact form styles */
+.contact-form-card {
+  background-color: rgba(16, 22, 29, 0.8); /* bunker with transparency */
+  border: 1px solid rgba(31, 91, 151, 0.3); /* matisse border */
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 0 20px rgba(31, 91, 151, 0.1);
+}
+
+.contact-input {
+  background-color: rgba(16, 22, 29, 0.6); /* bunker */
+  border: 1px solid rgba(31, 91, 151, 0.4); /* matisse */
+  color: white;
+}
+
+.contact-input:focus {
+  border-color: var(--color-matisse);
+  box-shadow: 0 0 0 3px rgba(31, 91, 151, 0.2);
+  outline: none;
+}
+
+.contact-button {
+  background: linear-gradient(135deg, var(--color-header) 0%, var(--color-subheader) 100%);
+  box-shadow: 0 4px 15px rgba(236, 78, 0, 0.3), 0 0 20px rgba(220, 95, 25, 0.2);
+}
+
+.contact-button:hover {
+  box-shadow: 0 6px 20px rgba(236, 78, 0, 0.4), 0 0 25px rgba(220, 95, 25, 0.3);
+}
+
+.contact-link {
+  color: var(--color-french-gray);
+  transition: all 0.2s ease;
+}
+
+.contact-link:hover {
+  color: var(--color-header);
+  transform: translateY(-2px);
+}

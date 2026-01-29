@@ -14,11 +14,7 @@ export const projects: Project[] = [
     fullDescription:
       "A comprehensive benefits management platform that streamlines employee benefits administration. Built with modern technologies to provide seamless user experience and robust backend functionality.",
     img: "/image.png",
-    images: [
-      "/image.png",
-      "/image2.png",
-      "/67541.png",
-    ],
+    images: ["/image.png", "/image2.png", "/67541.png"],
   },
   {
     name: "Hydrus.ai",
@@ -26,11 +22,7 @@ export const projects: Project[] = [
     fullDescription:
       "An AI-powered platform leveraging machine learning to deliver intelligent solutions. Features advanced analytics, real-time processing, and scalable infrastructure.",
     img: "/image2.png",
-    images: [
-      "/image2.png",
-      "/image.png",
-      "/67541.png",
-    ],
+    images: ["/image2.png", "/image.png", "/67541.png"],
     url: "https://hydrus.ai",
   },
   {
@@ -39,11 +31,7 @@ export const projects: Project[] = [
     fullDescription:
       "Enterprise Resource Planning system designed to manage business operations efficiently. Includes modules for finance, HR, inventory, and reporting with customizable workflows.",
     img: "/67541.png",
-    images: [
-      "/67541.png",
-      "/image.png",
-      "/image2.png",
-    ],
+    images: ["/67541.png", "/image.png", "/image2.png"],
   },
   {
     name: 'Restaurant services SaaS app "MeinLokal"',
@@ -51,11 +39,7 @@ export const projects: Project[] = [
     fullDescription:
       "A comprehensive SaaS solution for restaurant management. Features include table reservations, menu management, order processing, and customer analytics. Designed to help restaurants streamline operations and enhance customer experience.",
     img: "/image.png",
-    images: [
-      "/image.png",
-      "/image2.png",
-      "/67541.png",
-    ],
+    images: ["/image.png", "/image2.png", "/67541.png"],
   },
   {
     name: "Structura Pro",
@@ -63,11 +47,7 @@ export const projects: Project[] = [
     fullDescription:
       "Professional structural analysis and design software. Provides engineers with powerful tools for building design, calculations, and documentation. Built with precision and performance in mind.",
     img: "/image2.png",
-    images: [
-      "/image2.png",
-      "/67541.png",
-      "/image.png",
-    ],
+    images: ["/image2.png", "/67541.png", "/image.png"],
   },
   {
     name: "Seotoolbox",
@@ -75,11 +55,7 @@ export const projects: Project[] = [
     fullDescription:
       "All-in-one SEO toolkit for digital marketers. Features keyword research, site audit, backlink analysis, and performance tracking. Helps businesses improve their online visibility and search rankings.",
     img: "/67541.png",
-    images: [
-      "/67541.png",
-      "/image2.png",
-      "/image.png",
-    ],
+    images: ["/67541.png", "/image2.png", "/image.png"],
   },
 ];
 

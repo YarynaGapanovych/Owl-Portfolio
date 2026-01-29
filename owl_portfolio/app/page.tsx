@@ -4,6 +4,7 @@ import { default as FromIdeaToLaunch } from "@/components/FromIdeaToLaunch";
 import Projects from "@/components/Projects";
 import Team from "@/components/Team";
 import Technologies from "@/components/Technologies";
+import Contact from "@/components/Contact";
 import { projects } from "@/lib/projects";
 import Image from "next/image";
 
@@ -259,87 +260,7 @@ export default function Home() {
 
       <Technologies />
 
-      {/* Contact Section */}
-      <section id="contact" className="container mx-auto px-4 py-16 md:py-24 ">
-        <div className="max-w-2xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center text-header mb-4">
-            Share your idea
-          </h2>
-          <p className="text-center text-primary mb-12">
-            Tell us about your idea or project — we&apos;ll get back to you
-            within 24 hours.
-          </p>
-
-          <form className="space-y-6">
-            <div>
-              <label
-                htmlFor="name"
-                className="block text-sm font-medium text-gray-300 mb-2"
-              >
-                Name
-              </label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                required
-                className="w-full px-4 py-3 border border-purple-500/30 rounded-lg bg-[#0a0a0a] text-white focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
-              />
-            </div>
-            <div>
-              <label
-                htmlFor="email"
-                className="block text-sm font-medium text-gray-300 mb-2"
-              >
-                Email
-              </label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                required
-                className="w-full px-4 py-3 border border-purple-500/30 rounded-lg bg-[#0a0a0a] text-white focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
-              />
-            </div>
-            <div>
-              <label
-                htmlFor="message"
-                className="block text-sm font-medium text-gray-300 mb-2"
-              >
-                Message
-              </label>
-              <textarea
-                id="message"
-                name="message"
-                rows={6}
-                required
-                className="w-full px-4 py-3 border border-purple-500/30 rounded-lg bg-[#0a0a0a] text-white focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent resize-none"
-              ></textarea>
-            </div>
-            <button
-              type="submit"
-              className="w-full px-8 py-3 gradient-purple-pink rounded-lg font-medium hover:opacity-90 transition-opacity"
-            >
-              Send Message
-            </button>
-          </form>
-
-          <div className="mt-8 flex justify-center gap-6">
-            <a
-              href="#"
-              className="text-gray-400 hover:text-purple-400 transition-colors"
-            >
-              LinkedIn
-            </a>
-            <a
-              href="#"
-              className="text-gray-400 hover:text-purple-400 transition-colors"
-            >
-              GitHub
-            </a>
-          </div>
-        </div>
-      </section>
+      <Contact />
 
       <footer className="container mx-auto px-4 py-8 border-t border-purple-500/20 ">
         <div className="max-w-6xl mx-auto text-center text-gray-400">

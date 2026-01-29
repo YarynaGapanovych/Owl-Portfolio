@@ -20,9 +20,9 @@ export default function Projects({ projects }: ProjectsProps) {
             <Link
               key={index}
               href={`/projects/${createSlug(project.name)}`}
-              className="p-6 rounded-xl not-last:overflow-hidden cursor-pointer hover:opacity-80 transition-opacity border border-accent-opacity"
+              className=" rounded-xl not-last:overflow-hidden cursor-pointer hover:opacity-80 transition-opacity border border-accent-opacity"
             >
-              <div className="h-48  from-purple-900/20 to-pink-900/20 rounded-lg mb-4 overflow-hidden">
+              <div className="h-48  from-purple-900/20 to-pink-900/20 rounded-t-xl mb-4 overflow-hidden">
                 <Image
                   src={project.img}
                   alt={project.name}
