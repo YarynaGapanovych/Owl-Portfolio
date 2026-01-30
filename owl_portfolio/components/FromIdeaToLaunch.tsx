@@ -50,8 +50,6 @@ export default function FromIdeaToLaunch() {
     },
   ];
 
-  // Road segment Y positions from the SVG path
-  // The road has curves at: 50, 400, 750, 1100, 1450, 1800, 2150
   const roadSegmentPoints = [50, 400, 750, 1100, 1450, 1800, 2150];
 
   // Calculate center Y positions between road segments
@@ -164,9 +162,9 @@ export default function FromIdeaToLaunch() {
     "
               fill="none"
               stroke="#fff"
-              stroke-width="6"
-              stroke-dasharray="20 18"
-              stroke-linecap="round"
+              strokeWidth="6"
+              strokeDasharray="20 18"
+              strokeLinecap="round"
             />
           </svg>
 
@@ -179,7 +177,6 @@ export default function FromIdeaToLaunch() {
             const isTablet = windowWidth >= 768 && windowWidth < 1024;
 
             const getPositionStyle = () => {
-              // Center the block vertically by translating up by 50% of its height
               const verticalCenter = "translateY(-50%)";
 
               if (isMobile) {
