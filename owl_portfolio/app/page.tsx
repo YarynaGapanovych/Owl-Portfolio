@@ -1,10 +1,10 @@
 "use client";
 
+import Contact from "@/components/Contact";
 import { default as FromIdeaToLaunch } from "@/components/FromIdeaToLaunch";
 import Projects from "@/components/Projects";
 import Team from "@/components/Team";
 import Technologies from "@/components/Technologies";
-import Contact from "@/components/Contact";
 import { projects } from "@/lib/projects";
 import Image from "next/image";
 
@@ -96,16 +96,9 @@ const services = [
 export default function Home() {
   return (
     <div className="relative min-h-screen">
-      {/* <Image
-        src="/fragment.png"
-        alt="Background"
-        width={1200}
-        height={1500}
-        className="absolute -z-10 top-0 left-0 w-full h-auto"
-      /> */}
       <header
         id="home"
-        className="container mx-auto px-4 min-h-screen flex flex-col relative bg-header-light"
+        className="container mx-auto px-4 min-h-screen flex flex-col relative"
       >
         <div className="relative z-10">
           <nav className="container mx-auto px-4 py-6 flex items-center justify-between">
@@ -115,16 +108,7 @@ export default function Home() {
             </div>
           </nav>
           <div className="relative mx-auto text-center flex flex-col md:flex-row justify-center items-center gap-6 md:gap-12 py-8 md:py-16">
-            {/* <div className="absolute -inset-10 bg-[radial-gradient(circle,rgba(255,180,80,0.25),transparent_60%)] blur-3xl" /> */}
-
             <div className="order-2 md:order-1 relative z-10">
-              {/* <div
-                className="
-    absolute -inset-10
-    bg-[radial-gradient(ellipse_70%_45%_at_center,rgba(255,180,80,0.25),transparent_65%)]
-    blur-3xl
-  "
-              /> */}
               <div
                 className="
     absolute -inset-10
@@ -133,7 +117,6 @@ export default function Home() {
   "
               />
 
-              {/* <div className="absolute -inset-10 bg-[radial-gradient(circle,rgba(255,180,80,0.25),transparent_60%)] blur-3xl" /> */}
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6 text-header">
                 We make your ideas real
               </h1>
@@ -142,15 +125,7 @@ export default function Home() {
                 startups and businesses.
               </p>
             </div>
-            {/* <div className=" order-1 md:order-2 shrink-0">
-              <Image
-                src="/owl5.png"
-                alt="Owl"
-                width={450}
-                height={500}
-                className="max-w-[220px] sm:max-w-[400px] md:max-w-[500px] h-auto"
-              />
-            </div> */}
+
             <div className="relative order-1 md:order-2 shrink-0">
               <div className="absolute -inset-10 bg-[radial-gradient(circle,rgba(255,180,80,0.25),transparent_60%)] blur-3xl" />
               <Image
@@ -171,14 +146,13 @@ export default function Home() {
             What we deliver
           </h2>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {/* Left column - Large items */}
             <div className="flex flex-col gap-8 justify-between">
               {services
                 .filter((service) => service.size === "large")
                 .map((service, index) => (
                   <div
                     key={index}
-                    className="p-8 rounded-xl hover:glow-effect transition-all flex items-center gap-4"
+                    className="p-8 rounded-xl hover:glow-effect transition-all flex items-center gap-4 backdrop-blur-lg"
                     style={{
                       backgroundColor: service.bgColor,
                       border: `1px solid ${service.borderColor}`,
@@ -210,7 +184,6 @@ export default function Home() {
                 ))}
             </div>
 
-            {/* Right column - Small items */}
             <div className="flex flex-col justify-between gap-6">
               {services
                 .filter((service) => service.size === "small")

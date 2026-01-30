@@ -4,7 +4,6 @@ import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/react-splide/css";
 import Image from "next/image";
 
-// Tech stack with icons from public folder
 const techStack = [
   { name: "React", icon: "/react.svg" },
   { name: "Next.js", icon: "/nextjs.svg" },
@@ -75,35 +74,32 @@ export default function Technologies() {
   return (
     <section
       id="tech-stack"
-      className="container mx-auto px-4 py-16 md:py-24 relative overflow-hidden "
+      className="container mx-auto px-4 py-16 md:py-24 overflow-hidden "
     >
       <div className="max-w-6xl mx-auto relative z-10">
         <h2 className="text-3xl md:text-4xl font-bold text-center text-header mb-12">
           Technologies
         </h2>
         <div className="relative overflow-visible py-8">
-          <div
-            className="
-          absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
-          w-[120%] h-[120%]
-          bg-[radial-gradient(ellipse_70%_50%_at_50%_50%,rgba(255,180,80,0.2)_0%,rgba(255,180,80,0.08)_50%,transparent_80%)]
-          blur-3xl
-          pointer-events-none
-          -z-0
-        "
-          />
           <div className="relative z-10">
             <Splide options={splideOptions}>
               {techStack.map((tech, index) => (
                 <SplideSlide key={`${tech.name}-${index}`}>
-                  <div className="flex flex-col items-center group min-w-[90px] md:min-w-[100px]">
-                    <div className="w-16 h-16 rounded-lg mb-2 flex items-center justify-center hover:glow-effect transition-all text-white p-2">
+                  <div className="flex flex-col items-center group min-w-[90px] md:min-w-[100px] relative">
+                    <div className="relative w-16 h-16 flex items-center justify-center">
+                      <div
+                        className="absolute inset-0 translate-y-3 rounded-lg blur-md opacity-70"
+                        style={{
+                          background:
+                            "radial-gradient(circle, rgba(197,195,198,0.9) 0%, rgba(197,195,198,0.4) 60%, transparent 10%)",
+                        }}
+                      />
                       <Image
                         src={tech.icon}
                         alt={tech.name}
                         width={48}
                         height={48}
-                        className="object-contain w-12 h-12"
+                        className="relative z-10 w-12 h-12 pt-2"
                       />
                     </div>
                     <span className="text-sm text-gray-400 text-center">

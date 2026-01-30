@@ -4,23 +4,6 @@ export default function Contact() {
       id="contact"
       className="container mx-auto px-4 py-16 md:py-24 relative"
     >
-      {/* Background gradient effect */}
-      <div className="absolute inset-0 bg-gradient-radial-orange opacity-10 blur-3xl pointer-events-none" />
-      {/* <Image
-        src="/fragment.png"
-        alt="Background"
-        width={120}
-        height={100}
-        className="absolute -z-10 top-0 left-0  max-h-[100px]"
-      /> */}
-      {/* <Image
-        src="/round.png"
-        alt="Background"
-        width={1000}
-        height={1000}
-        className="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 max-h-full max-w-full scale-110 opacity-50"
-      /> */}
-
       <div className="max-w-2xl mx-auto relative z-10">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-center text-header mb-4">
