@@ -2,7 +2,7 @@ import { services } from "@/lib/services";
 
 export default function Services() {
   return (
-    <section id="services" className="container mx-auto px-4 py-16 md:py-24">
+    <section id="services" className="container mx-auto px-4">
       <div>
         <h2 className="text-3xl md:text-4xl font-bold text-center text-header mb-12">
           What we deliver

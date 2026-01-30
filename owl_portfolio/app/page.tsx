@@ -11,7 +11,7 @@ import { projects } from "@/lib/projects";
 
 export default function Home() {
   return (
-    <div className="relative min-h-screen">
+    <div className="relative min-h-screen flex flex-col gap-16 md:gap-40">
       <Header />
 
       <Services />
