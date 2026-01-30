@@ -34,10 +34,10 @@ export const projects: Project[] = [
     images: ["/67541.png", "/image.png", "/image2.png"],
   },
   {
-    name: 'Restaurant services SaaS app "MeinLokal"',
+    name: "MeinLokal",
     desc: "Project description coming soon...",
     fullDescription:
-      "A comprehensive SaaS solution for restaurant management. Features include table reservations, menu management, order processing, and customer analytics. Designed to help restaurants streamline operations and enhance customer experience.",
+      "Restaurant services SaaS app MeinLokal. A comprehensive SaaS solution for restaurant management. Features include table reservations, menu management, order processing, and customer analytics. Designed to help restaurants streamline operations and enhance customer experience.",
     img: "/image.png",
     images: ["/image.png", "/image2.png", "/67541.png"],
   },

@@ -1,7 +1,7 @@
+import { getProjectBySlug, projects } from "@/lib/projects";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getProjectBySlug, projects } from "@/lib/projects";
 
 type PageProps = {
   params: Promise<{
@@ -27,7 +27,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
   }
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a]">
+    <div className="min-h-screen">
       <div className="container mx-auto px-4 py-8 md:py-12">
         {/* Back Button */}
         <Link
