@@ -3,47 +3,7 @@
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/react-splide/css";
 import Image from "next/image";
-
-const techStack = [
-  { name: "React", icon: "/react.svg" },
-  { name: "Next.js", icon: "/nextjs.svg" },
-  { name: "Nest.js", icon: "/nestjs.svg" },
-  { name: "TypeScript", icon: "/typescript.svg" },
-  { name: "JavaScript", icon: "/js.svg" },
-  { name: "Python", icon: "/python.svg" },
-  { name: "Django", icon: "/django.svg" },
-  { name: "Node.js", icon: "/nodejs.svg" },
-  { name: "Express.js", icon: "/expressjs.svg" },
-  { name: "MongoDB", icon: "/mongodb.png" },
-  { name: "Mongoose", icon: "/mongoose.svg" },
-  { name: "MySQL", icon: "/mysql.svg" },
-  { name: "Prisma", icon: "/prisma.svg" },
-  { name: "Supabase", icon: "/supabase.svg" },
-  { name: "GraphQL", icon: "/graphql.svg" },
-  { name: "HTML5", icon: "/html5.png" },
-  { name: "CSS3", icon: "/css3.svg" },
-  { name: "Sass", icon: "/sass.svg" },
-  { name: "Material UI", icon: "/materialui.svg" },
-  { name: "Redux", icon: "/redux.svg" },
-  { name: "React Router", icon: "/reactrouter.svg" },
-  { name: "Vue.js", icon: "/vuejs.svg" },
-  { name: "Vite", icon: "/vitejs.svg" },
-  { name: "Webpack", icon: "/webpack.svg" },
-  { name: "Docker", icon: "/docker.svg" },
-  { name: "AWS", icon: "/aws.svg" },
-  { name: "Vercel", icon: "/vercel.svg" },
-  { name: "Heroku", icon: "/heroku.svg" },
-  { name: "Railway", icon: "/railway.svg" },
-  { name: "Git", icon: "/git.svg" },
-  { name: "GitHub", icon: "/github.svg" },
-  { name: "GitLab", icon: "/gitlab.svg" },
-  { name: "NPM", icon: "/npm2.svg" },
-  { name: "Jest", icon: "/jest.svg" },
-  { name: "Postman", icon: "/postman.svg" },
-  { name: "Jira", icon: "/jira.svg" },
-  { name: "Stripe", icon: "/stripe.svg" },
-  { name: "VS Code", icon: "/vscode.svg" },
-];
+import { techStack } from "@/lib/technologies";
 
 export default function Technologies() {
   const splideOptions = {
