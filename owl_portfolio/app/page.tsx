@@ -26,8 +26,11 @@ export default function Home() {
 
       <Contact />
 
-      <footer className="container mx-auto px-4 py-8 border-t border-purple-500/20 ">
-        <div className="max-w-6xl mx-auto text-center text-gray-400">
+      <footer
+        className="container mx-auto px-4 py-8 border-t"
+        style={{ borderColor: "rgba(31, 91, 151, 0.2)" }}
+      >
+        <div className="mx-auto text-center text-gray-400">
           <p>
             &copy; {new Date().getFullYear()} Owls Team. All rights reserved.
           </p>

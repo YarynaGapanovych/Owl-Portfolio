@@ -5,7 +5,7 @@ export default function Team() {
   return (
     <section
       id="team"
-      className="container mx-auto px-4 py-16 md:py-24 relative"
+      className="container mx-auto px-4 py-16 md:py-24"
     >
       <div className="max-w-6xl mx-auto">
         <h2 className="text-3xl md:text-4xl font-bold text-center text-header mb-16">
@@ -17,7 +17,6 @@ export default function Team() {
               key={index}
               className="relative flex flex-col items-center group"
             >
-              {/* <div className="absolute -inset-10 bg-[radial-gradient(circle,rgba(255,180,80,0.25),transparent_60%)] blur-3xl" /> */}
               {member.image ? (
                 <div className="w-40 h-40 md:w-44 md:h-44 rounded-full mx-auto mb-6 overflow-hidden flex items-center justify-center ring-2 ring-purple-500/20 group-hover:ring-purple-500/40 transition-all duration-300">
                   <Image
@@ -35,8 +34,8 @@ export default function Team() {
                 <h3 className="text-2xl md:text-3xl text-subheader font-bold">
                   {member.name}
                 </h3>
-                <div className="w-16 h-0.5 from-transparent via-purple-500/50 to-transparent mx-auto"></div>
-                <p className="text-matisse text-lg font-medium">
+                <div className="w-16 h-0.5 mx-auto"></div>
+                <p className="text-lg font-medium" style={{ color: "var(--color-matisse)" }}>
                   {member.role}
                 </p>
                 <p className="text-primary text-sm md:text-base leading-relaxed max-w-xs mx-auto mt-4">

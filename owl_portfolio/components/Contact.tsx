@@ -2,14 +2,14 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="container mx-auto px-4 py-16 md:py-24 relative"
+      className="container mx-auto px-4 py-16 md:py-24"
     >
-      <div className="max-w-2xl mx-auto relative z-10">
+      <div className="max-w-2xl mx-auto">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-center text-header mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-header mb-4">
             Share your idea
           </h2>
-          <p className="text-center text-primary text-lg">
+          <p className="text-primary text-lg">
             Tell us about your idea or project — we&apos;ll get back to you
             within 24 hours.
           </p>

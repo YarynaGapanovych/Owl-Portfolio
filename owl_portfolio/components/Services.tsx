@@ -3,7 +3,7 @@ import { services } from "@/lib/services";
 export default function Services() {
   return (
     <section id="services" className="container mx-auto px-4 py-16 md:py-24">
-      <div className=" mx-auto">
+      <div>
         <h2 className="text-3xl md:text-4xl font-bold text-center text-header mb-12">
           What we deliver
         </h2>
@@ -22,7 +22,7 @@ export default function Services() {
                   }}
                 >
                   <div
-                    className="w-12 h-12 rounded-lg mb-6 flex items-center justify-center"
+                    className="w-12 h-12 rounded-lg flex items-center justify-center"
                     style={{ backgroundColor: service.iconBg }}
                   >
                     <svg
@@ -60,7 +60,7 @@ export default function Services() {
                   }}
                 >
                   <div
-                    className="w-10 h-10 rounded-lg mb-3 flex items-center justify-center"
+                    className="w-10 h-10 rounded-lg flex items-center justify-center"
                     style={{ backgroundColor: service.iconBg }}
                   >
                     <svg
