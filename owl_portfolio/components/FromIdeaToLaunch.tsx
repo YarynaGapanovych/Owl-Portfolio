@@ -62,7 +62,6 @@ export default function FromIdeaToLaunch() {
             viewBox="0 0 1400 2400"
             preserveAspectRatio="xMidYMid meet"
             className="w-full h-auto mt-10"
-            style={{ maxWidth: "100%", height: "auto" }}
             xmlns="http://www.w3.org/2000/svg"
           >
             <defs>
@@ -130,7 +129,7 @@ export default function FromIdeaToLaunch() {
               strokeLinecap="round"
             />
           </svg>
-          <div className="container">
+          <div>
             {steps.map((step, index) => {
               const pos = stepPositions[index];
               const isLeft = pos.side === "left";
@@ -174,7 +173,7 @@ export default function FromIdeaToLaunch() {
                     boxShadow:
                       "0 0 20px rgba(31, 91, 151, 0.4), 0 0 40px rgba(31, 91, 151, 0.2), 0 10px 40px rgba(0, 0, 0, 0.5)",
                   }}
-                  className={`relative backdrop-blur-lg rounded-xl bg-[#4f474d]/20 shadow-light-bg flex gap-4 items-center mx-6 px-4 py-6 sm:p-4 ${isMobile ? "w-[70%]" : ""}`}
+                  className={`relative backdrop-blur-lg rounded-xl bg-[#4f474d]/20 flex gap-4 items-center px-4 py-6 ${isMobile ? "w-[70%]" : ""}`}
                 >
                   <h2 className="text-subheader text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-semibold">
                     {step.number}.

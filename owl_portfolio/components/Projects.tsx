@@ -10,7 +10,7 @@ type ProjectsProps = {
 
 export default function Projects({ projects }: ProjectsProps) {
   return (
-    <section id="projects" className="container mx-auto px-4 py-16 md:py-24 ">
+    <section id="projects" className="container mx-auto px-4">
       <div className="max-w-6xl mx-auto">
         <h2 className="text-3xl md:text-4xl font-bold text-center text-header mb-12">
           What We&apos;ve Built
@@ -20,9 +20,9 @@ export default function Projects({ projects }: ProjectsProps) {
             <Link
               key={index}
               href={`/projects/${createSlug(project.name)}`}
-              className=" rounded-xl not-last:overflow-hidden cursor-pointer hover:opacity-80 transition-opacity border border-accent-opacity"
+              className="portfolio-card rounded-xl cursor-pointer overflow-hidden"
             >
-              <div className="h-48  from-purple-900/20 to-pink-900/20 rounded-t-xl mb-4 overflow-hidden">
+              <div className="h-48 rounded-t-xl mb-4 overflow-hidden">
                 <Image
                   src={project.img}
                   alt={project.name}
@@ -31,7 +31,7 @@ export default function Projects({ projects }: ProjectsProps) {
                   className="object-cover w-full h-full"
                 />
               </div>
-              <h3 className="text-subheader text-xl font-semibold mb-2">
+              <h3 className="text-subheader text-xl font-semibold mb-2 px-4">
                 {project.name}
               </h3>
             </Link>
