@@ -1,9 +1,6 @@
 export default function Contact() {
   return (
-    <section
-      id="contact"
-      className="container mx-auto px-4"
-    >
+    <section id="contact" className="container mx-auto px-4">
       <div className="max-w-2xl mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-header mb-4">
@@ -67,7 +64,7 @@ export default function Contact() {
             </div>
             <button
               type="submit"
-              className="contact-button w-full px-8 py-4 rounded-lg font-semibold text-white transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]"
+              className="w-full px-8 py-4 rounded-lg font-semibold text-white transition-all duration-300  active:scale-[0.98] cursor-pointer border border-[#dc5f19] bg-gradient-to-r hover:from-[#dc5f19] hover:to-[#ec4e00]"
             >
               Send Message
             </button>

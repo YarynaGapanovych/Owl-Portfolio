@@ -104,23 +104,6 @@ body {
   outline: none;
 }
 
-.contact-button {
-  background: linear-gradient(
-    135deg,
-    var(--color-header) 0%,
-    var(--color-subheader) 100%
-  );
-  box-shadow:
-    0 4px 15px rgba(236, 78, 0, 0.3),
-    0 0 20px rgba(220, 95, 25, 0.2);
-}
-
-.contact-button:hover {
-  box-shadow:
-    0 6px 20px rgba(236, 78, 0, 0.4),
-    0 0 25px rgba(220, 95, 25, 0.3);
-}
-
 .contact-link {
   color: var(--color-french-gray);
   transition: all 0.2s ease;
@@ -129,4 +112,12 @@ body {
 .contact-link:hover {
   color: var(--color-header);
   transform: translateY(-2px);
+}
+
+/* Technology icon styles - ensures styles persist for cloned Splide slides */
+.tech-icon-container {
+  background-color: rgba(197, 195, 198, 0.4);
+  box-shadow:
+    0 0 15px rgba(197, 195, 198, 0.15),
+    0 0 30px rgba(197, 195, 198, 0.1);
 }
