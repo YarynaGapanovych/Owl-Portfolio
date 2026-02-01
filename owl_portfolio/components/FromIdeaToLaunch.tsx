@@ -16,7 +16,12 @@ export default function FromIdeaToLaunch() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const roadSegmentPoints = [150, 500, 850, 1200, 1550, 1900, 2250];
+  const isMobile = windowWidth < 768;
+
+  // Small devices: larger spacing, larger screens: original spacing
+  const roadSegmentPoints = isMobile
+    ? [150, 650, 1150, 1650, 2150, 2650, 3150] // Larger spacing for mobile
+    : [150, 500, 850, 1200, 1550, 1900, 2250]; // Original spacing for desktop
 
   const getCenterYPositions = () => {
     const centers = [];
@@ -30,7 +35,6 @@ export default function FromIdeaToLaunch() {
   };
 
   const getStepPositions = () => {
-    const isMobile = windowWidth < 768;
     const centerX = 700;
     const offset = isMobile ? 100 : 150;
 
@@ -57,32 +61,37 @@ export default function FromIdeaToLaunch() {
           From Idea to Launch
         </h2>
 
-        <div className="relative w-full" style={{ minHeight: "700px" }}>
-          <svg
-            viewBox="0 0 1400 2400"
-            preserveAspectRatio="xMidYMid meet"
-            className="w-full h-auto mt-10"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <defs>
-              <filter
-                id="roadGlow"
-                x="-50%"
-                y="-50%"
-                width="200%"
-                height="200%"
-              >
-                <feDropShadow
-                  dx="0"
-                  dy="0"
-                  stdDeviation="50"
-                  floodColor="#1f5b97"
-                  floodOpacity="0.5"
-                />
-              </filter>
-            </defs>
-            <path
-              d="
+        <div
+          className="relative w-full"
+          style={{ minHeight: isMobile ? "1000px" : "700px" }}
+        >
+          {/* Desktop SVG - Original spacing */}
+          {!isMobile && (
+            <svg
+              viewBox="0 0 1400 2400"
+              preserveAspectRatio="xMidYMid meet"
+              className="w-full h-auto mt-10"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <defs>
+                <filter
+                  id="roadGlowDesktop"
+                  x="-40%"
+                  y="-40%"
+                  width="150%"
+                  height="150%"
+                >
+                  <feDropShadow
+                    dx="0"
+                    dy="0"
+                    stdDeviation="50"
+                    floodColor="rgba(31, 91, 151)"
+                    floodOpacity="0.4"
+                  />
+                </filter>
+              </defs>
+              <path
+                d="
       M 0 150
       H 1000
       A 175 175 0 1 1 1000 500
@@ -98,15 +107,15 @@ export default function FromIdeaToLaunch() {
       A 175 175 0 1 0 400 2250
       H 1400
     "
-              stroke="#1f5b97"
-              strokeWidth="80"
-              fill="none"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              filter="url(#roadGlow)"
-            />
-            <path
-              d="
+                stroke="rgba(17, 45, 70, 0.3)"
+                strokeWidth="80"
+                fill="none"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                filter="url(#roadGlowDesktop)"
+              />
+              <path
+                d="
       M 0 150
       H 1000
       A 175 175 0 1 1 1000 500
@@ -122,20 +131,95 @@ export default function FromIdeaToLaunch() {
       A 175 175 0 1 0 400 2250
       H 1400
     "
-              fill="none"
-              stroke="#fff"
-              strokeWidth="6"
-              strokeDasharray="20 18"
-              strokeLinecap="round"
-            />
-          </svg>
+                fill="none"
+                stroke="#fff"
+                strokeWidth="6"
+                strokeDasharray="20 18"
+                strokeLinecap="round"
+              />
+            </svg>
+          )}
+
+          {/* Mobile SVG - Larger spacing */}
+          {isMobile && (
+            <svg
+              viewBox="0 0 1400 3300"
+              preserveAspectRatio="xMidYMid meet"
+              className="w-full h-auto mt-10"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <defs>
+                <filter
+                  id="roadGlowMobile"
+                  x="-50%"
+                  y="-50%"
+                  width="200%"
+                  height="200%"
+                >
+                  <feDropShadow
+                    dx="0"
+                    dy="0"
+                    stdDeviation="50"
+                    floodColor="rgba(31, 91, 151)"
+                    floodOpacity="0.5"
+                  />
+                </filter>
+              </defs>
+              <path
+                d="
+      M 0 150
+      H 1000
+      A 175 175 0 1 1 1000 650
+      H 400
+      A 175 175 0 1 0 400 1150
+      H 1000
+      A 175 175 0 1 1 1000 1650
+      H 400
+      A 175 175 0 1 0 400 2150
+      H 1000
+      A 175 175 0 1 1 1000 2650
+      H 400
+      A 175 175 0 1 0 400 3150
+      H 1400
+    "
+                stroke="rgba(17, 45, 70, 0.3)"
+                strokeWidth="80"
+                fill="none"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                filter="url(#roadGlowMobile)"
+              />
+              <path
+                d="
+      M 0 150
+      H 1000
+      A 175 175 0 1 1 1000 650
+      H 400
+      A 175 175 0 1 0 400 1150
+      H 1000
+      A 175 175 0 1 1 1000 1650
+      H 400
+      A 175 175 0 1 0 400 2150
+      H 1000
+      A 175 175 0 1 1 1000 2650
+      H 400
+      A 175 175 0 1 0 400 3150
+      H 1400
+    "
+                fill="none"
+                stroke="#fff"
+                strokeWidth="6"
+                strokeDasharray="20 18"
+                strokeLinecap="round"
+              />
+            </svg>
+          )}
           <div>
             {steps.map((step, index) => {
               const pos = stepPositions[index];
               const isLeft = pos.side === "left";
-              const yPercent = (pos.y / 2400) * 100;
-
-              const isMobile = windowWidth < 768;
+              const viewBoxHeight = isMobile ? 3300 : 2400;
+              const yPercent = (pos.y / viewBoxHeight) * 100;
               const isTablet = windowWidth >= 768 && windowWidth < 1024;
 
               const getPositionStyle = () => {
@@ -169,11 +253,14 @@ export default function FromIdeaToLaunch() {
                     position: "absolute",
                     top: `${yPercent}%`,
                     ...getPositionStyle(),
-                    maxWidth: isMobile ? "95%" : "400px",
+                    maxWidth: isMobile ? "95%" : "500px",
                     boxShadow:
                       "0 0 20px rgba(31, 91, 151, 0.4), 0 0 40px rgba(31, 91, 151, 0.2), 0 10px 40px rgba(0, 0, 0, 0.5)",
+                    border: "1px solid rgba(31, 91, 151, 0.5)", // matisse - matches road color
+
+                    backgroundColor: "rgba(31, 91, 151, 0.4)", // matisse - matches services colors
                   }}
-                  className={`relative backdrop-blur-lg rounded-xl bg-[#4f474d]/20 flex gap-4 items-center px-4 py-6 ${isMobile ? "w-[70%]" : ""}`}
+                  className={`relative backdrop-blur-lg rounded-xl flex gap-4 items-center px-6 py-6 ${isMobile ? "w-[70%]" : ""}`}
                 >
                   <h2 className="text-subheader text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-semibold">
                     {step.number}.
