@@ -7,7 +7,6 @@ import Projects from "@/components/Projects";
 import Services from "@/components/Services";
 import Team from "@/components/Team";
 import Technologies from "@/components/Technologies";
-import { projects } from "@/lib/projects";
 
 export default function Home() {
   return (
@@ -18,7 +17,7 @@ export default function Home() {
 
       <FromIdeaToLaunch />
 
-      <Projects projects={projects} />
+      <Projects />
 
       <Team />
 
