@@ -1,4 +1,18 @@
+"use client";
+import { submitContact } from "@/app/actions/contact";
+import { useState } from "react";
 export default function Contact() {
+  const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
+
+  async function action(formData: FormData) {
+    try {
+      await submitContact(formData);
+      setStatus("success");
+    } catch {
+      setStatus("error");
+    }
+  }
+
   return (
     <section id="contact" className="container mx-auto px-4">
       <div className="max-w-2xl mx-auto">
@@ -13,7 +27,7 @@ export default function Contact() {
         </div>
 
         <div className="contact-form-card rounded-2xl p-8 md:p-10">
-          <form className="space-y-6">
+          <form action={action} className="space-y-6">
             <div>
               <label
                 htmlFor="name"
@@ -68,17 +82,28 @@ export default function Contact() {
             >
               Send Message
             </button>
+            {status === "success" && (
+              <p className="text-green-500 text-center">
+                Message sent successfully ✅
+              </p>
+            )}
+
+            {status === "error" && (
+              <p className="text-red-500 text-center">
+                Something went wrong ❌
+              </p>
+            )}
           </form>
         </div>
 
-        <div className="mt-10 flex justify-center gap-8">
+        {/* <div className="mt-10 flex justify-center gap-8">
           <a href="#" className="contact-link font-medium">
             LinkedIn
           </a>
           <a href="#" className="contact-link font-medium">
             GitHub
           </a>
-        </div>
+        </div> */}
       </div>
     </section>
   );
