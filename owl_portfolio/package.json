@@ -17,6 +17,7 @@
     "@fortawesome/react-fontawesome": "^3.1.1",
     "@splidejs/react-splide": "^0.7.12",
     "@splidejs/splide": "^4.1.4",
+    "@supabase/supabase-js": "^2.93.3",
     "next": "16.1.4",
     "react": "19.2.3",
     "react-dom": "19.2.3"
