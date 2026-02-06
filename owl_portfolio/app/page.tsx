@@ -1,5 +1,3 @@
-"use client";
-
 import Contact from "@/components/Contact";
 import { default as FromIdeaToLaunch } from "@/components/FromIdeaToLaunch";
 import Header from "@/components/Header";
