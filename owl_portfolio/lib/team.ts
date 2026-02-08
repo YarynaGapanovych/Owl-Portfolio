@@ -18,6 +18,7 @@ export const team: TeamMember[] = [
     role: "Full-Stack Developer",
     description:
       "6+ years of experience building complex web platforms, SaaS products, and internal systems.",
+    image: "/avaAnastasia.jpg",
   },
   {
     name: "Iryna",
