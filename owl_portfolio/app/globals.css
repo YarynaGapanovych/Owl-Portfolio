@@ -121,3 +121,15 @@ body {
     0 0 15px rgba(197, 195, 198, 0.15),
     0 0 30px rgba(197, 195, 198, 0.1);
 }
+
+/* Animation for project cards */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

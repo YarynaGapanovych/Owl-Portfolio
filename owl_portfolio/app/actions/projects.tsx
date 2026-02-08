@@ -1,7 +1,7 @@
 "use server";
 
-import { supabaseServer } from "@/lib/supabase/server";
 import { createSlug } from "@/lib/projects";
+import { supabaseServer } from "@/lib/supabase/server";
 
 export type Project = {
   id?: number;
@@ -10,21 +10,28 @@ export type Project = {
   url?: string;
   cover_img?: string;
   images?: string[];
+  display_order?: number; // Optional: for custom ordering
 };
 
 export async function getProjects(): Promise<Project[]> {
   try {
-    const { data, error } = await supabaseServer
-      .from("projects")
-      .select("*")
-      .order("name");
+    const { data, error } = await supabaseServer.from("projects").select("*");
 
     if (error) {
       console.error("Error fetching projects:", error);
       return [];
     }
 
-    return data || [];
+    if (!data) return [];
+
+    return data.sort((a, b) => {
+      if (a.display_order != null && b.display_order != null) {
+        return a.display_order - b.display_order;
+      }
+      if (a.display_order != null) return -1;
+      if (b.display_order != null) return 1;
+      return a.name.localeCompare(b.name);
+    });
   } catch (err) {
     console.error("Unexpected error fetching projects:", err);
     return [];
