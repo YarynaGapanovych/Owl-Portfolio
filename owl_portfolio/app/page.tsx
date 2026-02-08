@@ -5,8 +5,11 @@ import Projects from "@/components/Projects";
 import Services from "@/components/Services";
 import Team from "@/components/Team";
 import Technologies from "@/components/Technologies";
+import { getProjects } from "@/app/actions/projects";
 
-export default function Home() {
+export default async function Home() {
+  const projects = await getProjects();
+
   return (
     <div className="relative min-h-screen flex flex-col gap-16 md:gap-40">
       <Header />
@@ -15,7 +18,7 @@ export default function Home() {
 
       <FromIdeaToLaunch />
 
-      <Projects />
+      <Projects projects={projects} />
 
       <Team />
 
