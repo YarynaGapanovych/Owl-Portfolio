@@ -1,3 +1,4 @@
+import { getProjects } from "@/app/actions/projects";
 import Contact from "@/components/Contact";
 import { default as FromIdeaToLaunch } from "@/components/FromIdeaToLaunch";
 import Header from "@/components/Header";
@@ -5,7 +6,6 @@ import Projects from "@/components/Projects";
 import Services from "@/components/Services";
 import Team from "@/components/Team";
 import Technologies from "@/components/Technologies";
-import { getProjects } from "@/app/actions/projects";
 
 export default async function Home() {
   const projects = await getProjects();
