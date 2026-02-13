@@ -78,18 +78,24 @@ export default function Contact() {
             </div>
             <button
               type="submit"
-              className="w-full px-8 py-4 rounded-lg font-semibold text-white transition-all duration-300  active:scale-[0.98] cursor-pointer border border-[#dc5f19] bg-gradient-to-r hover:from-[#dc5f19] hover:to-[#ec4e00]"
+              className="w-full px-8 py-4 rounded-lg font-semibold border border-subheader text-primary transition-all duration-300  active:scale-[0.98] cursor-pointer  bg-gradient-to-r hover:from-[#dc5f19] hover:to-[#ec4e00]"
             >
               Send Message
             </button>
             {status === "success" && (
-              <p className="text-green-500 text-center">
+              <p
+                className="text-center"
+                style={{ color: "var(--color-status-success)" }}
+              >
                 Message sent successfully ✅
               </p>
             )}
 
             {status === "error" && (
-              <p className="text-red-500 text-center">
+              <p
+                className="text-center"
+                style={{ color: "var(--color-status-error)" }}
+              >
                 Something went wrong ❌
               </p>
             )}
