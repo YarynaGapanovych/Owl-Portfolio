@@ -37,12 +37,18 @@ export default function Technologies() {
         <h2 className="text-3xl md:text-4xl font-bold text-center text-header mb-8">
           Technologies
         </h2>
+
         <div className="relative overflow-visible py-8 bg-bunker backdrop-blur-lg rounded-xl">
           <Splide options={splideOptions}>
             {techStack.map((tech, index) => (
               <SplideSlide key={`${tech.name}-${index}`}>
                 <div className="flex flex-col items-center group min-w-[90px] md:min-w-[100px]">
-                  <div className="relative w-16 h-16 flex items-center justify-center tech-icon-container rounded-lg mt-8">
+                  <div
+                    className="relative w-16 h-16 flex items-center justify-center rounded-lg mt-8 shadow-[0_0_20px_rgba(79,71,77,0.4)]"
+                    style={{
+                      backgroundColor: "rgba(92, 88, 96, 0.75)",
+                    }}
+                  >
                     <Image
                       src={tech.icon}
                       alt={tech.name}
