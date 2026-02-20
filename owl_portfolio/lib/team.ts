@@ -10,21 +10,21 @@ export const team: TeamMember[] = [
     name: "Yaryna",
     role: "Full-Stack Developer",
     description:
-      "5+ years of experience building complex web platforms, SaaS products, and internal systems.",
+      "5+ years building ESG, ERP, and multi-tenant SaaS applications end-to-end — from architecture to deployment.",
     image: "/avaYaryna.jpg",
   },
   {
     name: "Anastasia",
     role: "Full-Stack Developer",
     description:
-      "6+ years of experience building complex web platforms, SaaS products, and internal systems.",
+      "6+ years delivering scalable e-commerce, ESG, ERP, and crypto solutions with complex business logic and user flows.",
     image: "/avaAnastasia.jpg",
   },
   {
     name: "Iryna",
     role: "Full-Stack Developer",
     description:
-      "4+ years of experience building complex web platforms, SaaS products, and internal systems.",
+      "4+ years developing ERP, ESG, and education platforms with scalable architecture and structured workflows.",
     image: "/avaIra2.jpg",
   },
 ];

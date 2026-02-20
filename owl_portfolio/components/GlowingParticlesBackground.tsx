@@ -51,11 +51,21 @@ export default function GlowingParticlesBackground() {
     // Animation variables
     let animationFrame: number;
 
-    // Initialize particles
+    const isMobile = () => window.innerWidth < 768;
+
+    // Initialize particles (fewer on mobile for performance)
     const initParticles = () => {
       particles.length = 0;
+      const mobile = isMobile();
+      const n = {
+        largeBlue: mobile ? 4 : 10,
+        mediumOrange: mobile ? 8 : 20,
+        smallBlue: mobile ? 12 : 30,
+        tinyOrange: mobile ? 8 : 20,
+        smallWhite: mobile ? 12 : 30,
+      };
       // Large blue particles - foreground layer
-      for (let i = 0; i < 10; i++) {
+      for (let i = 0; i < n.largeBlue; i++) {
         particles.push({
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
@@ -67,7 +77,7 @@ export default function GlowingParticlesBackground() {
         });
       }
       // Medium orange particles - mid layer
-      for (let i = 0; i < 20; i++) {
+      for (let i = 0; i < n.mediumOrange; i++) {
         particles.push({
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
@@ -79,7 +89,7 @@ export default function GlowingParticlesBackground() {
         });
       }
       // Small blue particles - background layer for depth
-      for (let i = 0; i < 30; i++) {
+      for (let i = 0; i < n.smallBlue; i++) {
         particles.push({
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
@@ -91,7 +101,7 @@ export default function GlowingParticlesBackground() {
         });
       }
       // Tiny orange particles - deep background layer
-      for (let i = 0; i < 20; i++) {
+      for (let i = 0; i < n.tinyOrange; i++) {
         particles.push({
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
@@ -103,7 +113,7 @@ export default function GlowingParticlesBackground() {
         });
       }
       // Very small white/gray particles - deepest layer
-      for (let i = 0; i < 30; i++) {
+      for (let i = 0; i < n.smallWhite; i++) {
         particles.push({
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,

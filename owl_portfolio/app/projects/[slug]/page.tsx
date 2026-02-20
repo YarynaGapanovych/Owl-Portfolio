@@ -1,6 +1,6 @@
+import { getProjectBySlug } from "@/app/actions/projects";
 import ProjectImageGallery from "@/components/ProjectImageGallery";
 import Link from "next/link";
-import { getProjectBySlug } from "@/app/actions/projects";
 
 export default async function ProjectDetailPage({
   params,
