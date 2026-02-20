@@ -87,7 +87,7 @@ export default function Contact() {
                 className="text-center"
                 style={{ color: "var(--color-status-success)" }}
               >
-                Message sent successfully ✅
+                Message sent successfully!
               </p>
             )}
 
@@ -96,7 +96,7 @@ export default function Contact() {
                 className="text-center"
                 style={{ color: "var(--color-status-error)" }}
               >
-                Something went wrong ❌
+                Something went wrong!
               </p>
             )}
           </form>
