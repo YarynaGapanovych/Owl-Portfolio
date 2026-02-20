@@ -253,14 +253,16 @@ export default function FromIdeaToLaunch() {
                     position: "absolute",
                     top: `${yPercent}%`,
                     ...getPositionStyle(),
-                    maxWidth: isMobile ? "95%" : "500px",
+                    ...(isMobile
+                      ? { width: "calc(100vw - 3rem)", maxWidth: "none" }
+                      : { maxWidth: "500px" }),
                     boxShadow:
                       "0 0 20px rgba(31, 91, 151, 0.4), 0 0 40px rgba(31, 91, 151, 0.2), 0 10px 40px rgba(0, 0, 0, 0.5)",
                     border: "1px solid rgba(31, 91, 151, 0.5)", // matisse - matches road color
 
                     backgroundColor: "rgba(31, 91, 151, 0.4)", // matisse - matches services colors
                   }}
-                  className={`relative backdrop-blur-lg rounded-xl flex gap-4 items-center px-6 py-6 ${isMobile ? "w-[70%]" : ""}`}
+                  className="relative backdrop-blur-lg rounded-xl flex gap-4 items-center px-6 py-6"
                 >
                   <h2 className="text-subheader text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-semibold">
                     {step.number}.

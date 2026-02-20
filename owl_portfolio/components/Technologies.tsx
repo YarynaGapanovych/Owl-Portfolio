@@ -20,13 +20,13 @@ export default function Technologies() {
     pagination: false,
     breakpoints: {
       1024: {
-        perPage: 5,
+        perPage: 6,
       },
       768: {
-        perPage: 4,
+        perPage: 5,
       },
       640: {
-        perPage: 3,
+        perPage: 4,
       },
     },
   };
@@ -34,19 +34,19 @@ export default function Technologies() {
   return (
     <section id="tech-stack" className="container mx-auto px-4">
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-3xl md:text-4xl font-bold text-center text-header mb-8">
+        <h2 className="text-3xl md:text-4xl font-bold text-center text-header md:mb-8">
           Technologies
         </h2>
 
-        <div className="relative overflow-visible py-8 bg-bunker backdrop-blur-lg rounded-xl">
+        <div className="relative overflow-visible py-8  backdrop-blur-sm rounded-xl">
           <Splide options={splideOptions}>
             {techStack.map((tech, index) => (
               <SplideSlide key={`${tech.name}-${index}`}>
                 <div className="flex flex-col items-center group min-w-[90px] md:min-w-[100px]">
                   <div
-                    className="relative w-16 h-16 flex items-center justify-center rounded-lg mt-8 shadow-[0_0_20px_rgba(79,71,77,0.4)]"
+                    className="relative w-16 h-16 flex items-center justify-center rounded-lg mt-8 shadow-[0_0_20px_rgba(79,71,77,0.4)] backdrop-blur-lg"
                     style={{
-                      backgroundColor: "rgba(92, 88, 96, 0.75)",
+                      backgroundColor: "rgba(32, 94, 148, 0.2)",
                     }}
                   >
                     <Image

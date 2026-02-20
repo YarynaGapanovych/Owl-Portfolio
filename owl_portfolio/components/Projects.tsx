@@ -4,7 +4,7 @@ import type { Project } from "@/app/actions/projects";
 import { createSlug } from "@/lib/projects";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 type ProjectsProps = {
   projects: Project[];
@@ -12,11 +12,30 @@ type ProjectsProps = {
 
 export default function Projects({ projects }: ProjectsProps) {
   const [showAll, setShowAll] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
   const displayedProjects = showAll ? projects : projects.slice(0, 3);
   const hasMore = projects.length > 3;
 
+  useEffect(() => {
+    const section = sectionRef.current;
+    if (!section) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const [entry] = entries;
+        if (!entry.isIntersecting && window.location.hash === "#projects") {
+          history.replaceState(null, "", window.location.pathname);
+        }
+      },
+      { threshold: 0, rootMargin: "0px" }
+    );
+
+    observer.observe(section);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section id="projects" className="container mx-auto px-4">
+    <section ref={sectionRef} id="projects" className="container mx-auto px-4">
       <div className="max-w-6xl mx-auto">
         <h2 className="text-3xl md:text-4xl font-bold text-center text-header mb-12">
           What We&apos;ve Built
